@@ -10,7 +10,7 @@ app.use("/", (request, response) => {
     "Hello World!"
   );
   const { pipe } = renderToPipeableStream(reactTree, {
-    bootstrapScriptContent: 'alert("Shell JS run before streaming");',
+    bootstrapScriptContent: 'alert("Shell JS run before streaming content");',
     onShellReady: () => {
       pipe(response);
     },
