@@ -34,22 +34,20 @@
       );
     </script>
     <script src="/client-component.js"></script>
-    <!--     <script>
-      function ClientComponent() {
-        const [count, setCount] = window.React.useState(0);
-
-        function handleClick() {
-          setCount(count + 1);
-        }
-
-        return React.createElement(
-          "button",
-          { onClick: handleClick },
-          "You pressed me ",
-          count,
-          " times"
-        );
-      }
-    </script> -->
+    <script>
+      // react-server-dom-webpack expects the
+      // __webpack_require__ function to be availabe
+      // on the client
+      window.__webpack_require__ = async (id) => {
+        console.log(ClientComponent);
+        console.log("id");
+        console.log(id);
+        console.log("id");
+        // return import(id);
+        console.log(ClientComponent);
+        console.log("id2");
+        return {ClientComponent};
+      };
+    </script>
   </body>
 </html>

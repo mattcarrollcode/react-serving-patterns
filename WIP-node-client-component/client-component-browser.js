@@ -1,5 +1,3 @@
-"use client";
-
 function ClientComponent() {
 	const [count, setCount] = React.useState(0);
 
