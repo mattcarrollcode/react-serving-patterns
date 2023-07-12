@@ -1,59 +1,38 @@
-const { createElement } = require("react");
-const { renderToReadableStream } = require("react-dom/server");
+const React = require("react");
+const { renderToPipeableStream } = require("react-server-dom-webpack/server");
 const express = require("express");
 const app = express();
+// const { ClientComponent } = require("./client-component");
 
 app.get("/", (request, response) => {
-  res.setHeader("Content-Type", "text/html");
-  res.send(`
-    <h1>Static HTML</h1>
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <div id="root"><div>
-    
-  `);
-  const reactTree = createElement(
-    "div",
-    null,
-    createElement("h1", null, "Server component"),
-    createElement("Counter", null)
-  );
+  response.sendFile(__dirname + "/index.html");
 });
 
-// Endpoint to retrive the client compontent's Javascript
-// This is usally handled by the framework/bunder
-app.get("/client-component.js", (request, response) => {
-  const stream = renderToPipeableStream(reactTree, {
-    // This is the client component map which is
-    // usally created by the framework and/or bundler
+app.get("/rsc", (request, response) => {
+  async function ServerComponent() {
+    // await new Promise((resolve) => {
+    //   setTimeout(resolve, 3000);
+    // });
+    return React.createElement("p", null, "server component");
+  }
+  const reactTree = React.createElement(
+    "div",
+    null,
+    React.createElement(ServerComponent, null),
+    React.createElement("ClientComponent", null)
+  );
+  const { pipe } = renderToPipeableStream(reactTree, {
     "/client-component.js": {
       id: "/client-component.js",
-      name: "Counter",
       chunks: [],
-      async: true,
-    },
-    onShellReady: () => {
-      pipe(response);
+      name: "ClientComponent",
     },
   });
-  const scriptContent = response.type("text/javascript");
-  response.send(`
-  "use client"
+  pipe(response);
+});
 
-  function counter() {
-    const [count, setCount] = useState(0);
-
-    function handleClick() {
-      setCount(count + 1);
-    }
-
-    return React.createElement(
-      "button",
-      { onClick: handleClick },
-      "You pressed me ",
-      count,
-      " times"
-    );
-  }`);
+app.get("/client-component.js", (request, response) => {
+  response.sendFile(__dirname + "/client-component.js");
 });
 
 app.listen(3000, () => {

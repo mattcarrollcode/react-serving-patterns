@@ -14,6 +14,7 @@ This is a repo that contains a collection of ways to serve React apps. The focus
 -   [Streaming](https://github.com/mattcarrollcode/react-serving-patterns/tree/main/node-streaming)
 -   [Streaming with shell](https://github.com/mattcarrollcode/react-serving-patterns/tree/main/node-streaming-with-shell)
 -   [Streaming with suspense](https://github.com/mattcarrollcode/react-serving-patterns/tree/main/node-streaming-with-suspense)
+-   [Server components](https://github.com/mattcarrollcode/react-serving-patterns/tree/main/node-server-components)
 
 ### Web Streams (aka edge runtime)
 
@@ -24,4 +25,4 @@ This is a repo that contains a collection of ways to serve React apps. The focus
 -   Get Node.js [Client components](https://github.com/mattcarrollcode/react-serving-patterns/tree/main/WIP-node-client-component) working
 -   Translate all Node.js examples to Web Streams
 -   Get Node.js [SSR with hydration](https://github.com/mattcarrollcode/react-serving-patterns/tree/main/WIP-node-ssr-with-hydration) working
--   Write readme for example
+-   Write readme for each example
