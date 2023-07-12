@@ -26,12 +26,12 @@ app.get("/rsc", (request, response) => {
   );
   const clientComponentManifest = {
     [`file://${__dirname}/client-component.js`]: {
-      id: `file://${__dirname}/client-component.js`,
+      id: `/client-component.js`,
       chunks: [],
       name: "ClientComponent",
+      async: false,
     },
   };
-  console.log(clientComponentManifest);
   const { pipe } = renderToPipeableStream(reactTree, clientComponentManifest);
   pipe(response);
 });
