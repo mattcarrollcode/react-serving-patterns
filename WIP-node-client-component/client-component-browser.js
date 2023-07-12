@@ -1,9 +1,5 @@
 "use client";
 
-const React = require("react");
-
-console.log(React);
-
 function ClientComponent() {
 	const [count, setCount] = React.useState(0);
 
@@ -19,5 +15,3 @@ function ClientComponent() {
 		" times"
 	);
 }
-
-exports.ClientComponent = ClientComponent;

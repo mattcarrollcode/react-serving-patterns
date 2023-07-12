@@ -12,7 +12,6 @@
       src="https://www.unpkg.com/react-server-dom-webpack@18.3.0-canary-7118f5dd7-20230705/umd/react-server-dom-webpack-client.browser.development.js"
       crossorigin
     ></script>
-    <script src="/client-component.js"></script>
   </head>
   <body>
     <h1>Static HTML</h1>
@@ -34,5 +33,23 @@
         )
       );
     </script>
+    <script src="/client-component.js"></script>
+    <!--     <script>
+      function ClientComponent() {
+        const [count, setCount] = window.React.useState(0);
+
+        function handleClick() {
+          setCount(count + 1);
+        }
+
+        return React.createElement(
+          "button",
+          { onClick: handleClick },
+          "You pressed me ",
+          count,
+          " times"
+        );
+      }
+    </script> -->
   </body>
 </html>
