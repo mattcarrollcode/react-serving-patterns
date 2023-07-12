@@ -7,7 +7,6 @@ This is a repo that contains a collection of ways to serve React apps. The focus
 ### Platform agnostic
 
 -   [Hydration](https://github.com/mattcarrollcode/react-serving-patterns/tree/main/hydration)
-
 -   [Static SSR](https://github.com/mattcarrollcode/react-serving-patterns/tree/main/static-ssr)
 
 ### Node.js

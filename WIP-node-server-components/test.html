@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <script
+      src="https://www.unpkg.com/browse/react@18.3.0-canary-7118f5dd7-20230705/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://www.unpkg.com/browse/react-server-dom-webpack@18.3.0-canary-7118f5dd7-20230705/umd/react-server-dom-webpack-client.browser.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://www.unpkg.com/browse/react-dom@18.3.0-canary-7118f5dd7-20230705/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+  </head>
+  <body>
+    <h1>Static HTML</h1>
+    <div id="root"></div>
+    <script>
+      let rsc = null;
+            function App() {
+              if (!rsc) {
+                rsc = ReactServerDOMClient.createFromFetch(
+                  fetch("/app", {
+                    headers: {
+                      Accept: "text/x-component",
+                    },
+                  })
+                );
+              }
+
+                      return rsc;
+            }
+
+            const root = ReactDOM.createRoot(document.getElementById("root"));
+            root.render(React.createElement(
+        React.Suspense,
+        { fallback: "Loading..." },
+        React.createElement(App, null)
+      );
+    </script>
+  </body>
+</html>
