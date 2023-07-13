@@ -2,8 +2,6 @@
 
 const React = require("react");
 
-console.log(React);
-
 function ClientComponent() {
 	const [count, setCount] = React.useState(0);
 

@@ -12,6 +12,15 @@
       src="https://www.unpkg.com/react-server-dom-webpack@18.3.0-canary-7118f5dd7-20230705/umd/react-server-dom-webpack-client.browser.development.js"
       crossorigin
     ></script>
+    <!-- <script src="/webpack-bootstrap.js"></script> -->
+    <!-- <script>
+      // react-server-dom-webpack expects the
+      // __webpack_require__ function to be availabe
+      // on the client
+      window.__webpack_require__ = (id) => {
+        return import(id)
+      };
+    </script> -->
   </head>
   <body>
     <h1>Static HTML</h1>
@@ -34,20 +43,5 @@
       );
     </script>
     <script src="/client-component.js"></script>
-    <script>
-      // react-server-dom-webpack expects the
-      // __webpack_require__ function to be availabe
-      // on the client
-      window.__webpack_require__ = async (id) => {
-        console.log(ClientComponent);
-        console.log("id");
-        console.log(id);
-        console.log("id");
-        // return import(id);
-        console.log(ClientComponent);
-        console.log("id2");
-        return {ClientComponent};
-      };
-    </script>
   </body>
 </html>
